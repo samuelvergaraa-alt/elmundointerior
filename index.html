@@ -1,1163 +1,368 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-  <title>Niño Introvertido, Niño Seguro — Producto</title>
-  <meta name="description" content="Guía rápida para que tu hijo cuente todo. Desarrollado por Laura Gómez junto a psicólogos y terapeutas familiares.">
-  <style>
-    :root {
-      --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      --font-serif: Georgia, Cambria, "Times New Roman", Times, serif;
-      --color-blue-dark: #132c4d;
-      --color-blue-light: #f1f5f9;
-      --color-teal-dark: #115e59;
-      --color-teal: #0d9488;
-      --color-teal-light: #f0fdfa;
-      --color-text-dark: #1e293b;
-      --color-text-main: #334155;
-      --color-text-muted: #64748b;
-      --color-bg-base: #f8fafc;
-      --color-bg-white: #ffffff;
-      --color-bg-accent: #faf7f2;
-      --color-border: #e2e8f0;
-      --color-gold: #f59e0b;
-      --color-red: #ef4444;
-      --color-red-light: #fef2f2;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: var(--color-bg-base);
-      color: var(--color-text-main);
-      font-family: var(--font-sans);
-      line-height: 1.6;
-      text-size-adjust: 100%;
-      -webkit-text-size-adjust: 100%;
-    }
-
-    .page-wrapper {
-      max-width: 680px;
-      margin: 0 auto;
-      background-color: var(--color-bg-white);
-      box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* Top Announcement Bar - Teal Tint */
-    .announce-bar {
-      background-color: var(--color-blue-dark);
-      color: var(--color-bg-white);
-      text-align: center;
-      padding: 8px 12px;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    /* Navbar styling */
-    .navbar {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 12px 20px;
-      border-bottom: 1px solid var(--color-border);
-      position: sticky;
-      top: 0;
-      background-color: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(8px);
-      z-index: 100;
-    }
-
-    .logo-container {
-      display: flex;
-      align-items: center;
-      text-decoration: none;
-      color: var(--color-blue-dark);
-      font-weight: 700;
-      font-size: 15px;
-      gap: 8px;
-    }
-
-    .logo-icon {
-      width: 24px;
-      height: 24px;
-      background-color: var(--color-blue-dark);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-family: var(--font-serif);
-      font-size: 12px;
-      font-weight: bold;
-    }
-
-    .cart-container {
-      position: relative;
-      background: none;
-      border: none;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .cart-svg {
-      width: 22px;
-      height: 22px;
-      fill: none;
-      stroke: var(--color-blue-dark);
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    .cart-badge {
-      position: absolute;
-      top: -3px;
-      right: -3px;
-      background-color: var(--color-blue-dark);
-      color: white;
-      font-size: 9px;
-      font-weight: 700;
-      width: 15px;
-      height: 15px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Product Section Hero Layout */
-    .product-hero {
-      padding: 24px 20px;
-    }
-
-    /* CSS Ebook + Thumbnails Area */
-    .hero-gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 24px;
-    }
-
-    .css-book-large {
-      width: 210px;
-      height: 290px;
-      background: linear-gradient(135deg, #254b7a, #132c4d);
-      border-radius: 4px 14px 14px 4px;
-      box-shadow: 15px 20px 45px rgba(0, 0, 0, 0.25), 
-                  inset 4px 0 6px rgba(255,255,255,0.1),
-                  inset -4px 0 6px rgba(0,0,0,0.3);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      color: white;
-      padding: 24px;
-      border-left: 6px solid #233e70;
-      position: relative;
-    }
-
-    .css-book-large::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      right: 14px;
-      width: 14px;
-      height: 100%;
-      background: linear-gradient(to right, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 100%);
-    }
-
-    .css-book-large-tag {
-      font-size: 9px;
-      text-transform: uppercase;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      color: #93c5fd;
-    }
-
-    .css-book-large-title {
-      font-family: var(--font-serif);
-      font-size: 20px;
-      line-height: 1.25;
-      font-weight: 700;
-      margin-top: 12px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-    }
-
-    .css-book-large-subtitle {
-      font-size: 11px;
-      color: #cbd5e1;
-      margin-top: 6px;
-      line-height: 1.4;
-    }
-
-    .css-book-large-footer {
-      border-top: 1px solid rgba(255,255,255,0.2);
-      padding-top: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .css-book-large-author {
-      font-size: 11px;
-      font-weight: 600;
-      color: #f8fafc;
-    }
-
-    .css-book-large-gold-seal {
-      width: 20px;
-      height: 20px;
-      background-color: var(--color-gold);
-      border-radius: 50%;
-    }
-
-    .thumbnails-row {
-      display: flex;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .thumbnail-box {
-      width: 48px;
-      height: 48px;
-      border: 1px solid var(--color-border);
-      background-color: var(--color-bg-base);
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: bold;
-      font-size: 10px;
-      color: var(--color-text-muted);
-      cursor: pointer;
-    }
-
-    .thumbnail-box.active {
-      border-color: var(--color-blue-dark);
-      background-color: var(--color-blue-light);
-    }
-
-    /* Product Specs Meta */
-    .hero-details {
-      margin-top: 12px;
-    }
-
-    .rating-line {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 12px;
-      color: var(--color-text-dark);
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .stars {
-      color: var(--color-gold);
-      font-size: 12px;
-      letter-spacing: 0.1em;
-    }
-
-    .product-category-tag {
-      display: inline-block;
-      color: #3b82f6;
-      background-color: #eff6ff;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 2px 8px;
-      border-radius: 4px;
-      margin-bottom: 12px;
-    }
-
-    .product-title {
-      font-family: var(--font-serif);
-      color: var(--color-blue-dark);
-      font-size: 24px;
-      line-height: 1.25;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .product-tagline {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--color-text-dark);
-      line-height: 1.5;
-      margin-bottom: 12px;
-    }
-
-    .author-credit-inline {
-      font-size: 13px;
-      color: var(--color-text-muted);
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    /* Argentina Users Box */
-    .argentina-badge-box {
-      background-color: #f0fdf4;
-      border: 1px solid rgba(22, 163, 74, 0.15);
-      border-radius: 8px;
-      padding: 12px;
-      margin-bottom: 20px;
-      font-size: 11.5px;
-      line-height: 1.5;
-      color: #15803d;
-      font-weight: 600;
-    }
-
-    /* Checklist list */
-    .bullet-benefits {
-      margin-bottom: 20px;
-    }
-
-    .benefit-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13.5px;
-      line-height: 1.5;
-      margin-bottom: 8px;
-    }
-
-    .benefit-check {
-      color: var(--color-teal);
-      font-weight: bold;
-      flex-shrink: 0;
-    }
-
-    /* Price tag configuration */
-    .pricing-hero-block {
-      background-color: #fafbfc;
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 16px;
-      margin-bottom: 24px;
-    }
-
-    .price-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 8px;
-    }
-
-    .price-old {
-      font-size: 16px;
-      text-decoration: line-through;
-      color: var(--color-text-muted);
-    }
-
-    .price-new {
-      font-size: 26px;
-      font-weight: 800;
-      color: var(--color-red);
-    }
-
-    .pct-discount-badge {
-      font-size: 11px;
-      font-weight: bold;
-      background-color: var(--color-red-light);
-      color: var(--color-red);
-      padding: 2px 8px;
-      border-radius: 100px;
-    }
-
-    .price-sub-caption {
-      font-size: 12px;
-      color: var(--color-text-muted);
-      line-height: 1.4;
-      font-style: italic;
-    }
-
-    /* Extended list block of value */
-    .value-points-list {
-      margin-bottom: 24px;
-    }
-
-    .value-point {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 13.5px;
-      margin-bottom: 12px;
-      line-height: 1.5;
-    }
-
-    .value-point strong {
-      color: var(--color-text-dark);
-    }
-
-    .value-marker-warning {
-      color: var(--color-gold);
-      flex-shrink: 0;
-    }
-
-    .value-marker-check {
-      color: var(--color-teal);
-      flex-shrink: 0;
-    }
-
-    /* Buttons */
-    .btn-large-buy {
-      display: block;
-      width: 100%;
-      text-decoration: none;
-      background-color: var(--color-teal);
-      color: white;
-      font-size: 16px;
-      font-weight: 700;
-      padding: 18px 24px;
-      border-radius: 12px;
-      text-align: center;
-      box-shadow: 0 4px 16px rgba(13, 148, 136, 0.3);
-      margin-bottom: 20px;
-    }
-
-    /* Guarantee statement cards */
-    .guarantee-box-white {
-      border: 1px solid var(--color-border);
-      background-color: var(--color-bg-base);
-      border-radius: 12px;
-      padding: 16px;
-      display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 24px;
-    }
-
-    .guarantee-svg {
-      width: 24px;
-      height: 24px;
-      stroke: var(--color-teal);
-      stroke-width: 2;
-      fill: none;
-      flex-shrink: 0;
-    }
-
-    .guarantee-text {
-      font-size: 12.5px;
-      line-height: 1.4;
-      color: var(--color-text-main);
-    }
-
-    /* Tiny 4-grid items */
-    .grid-benefits-4 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 32px;
-    }
-
-    .grid-benefit-card {
-      background-color: var(--color-blue-light);
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--color-blue-dark);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .tiny-icon {
-      flex-shrink: 0;
-      font-size: 14px;
-    }
-
-    /* FAQ Collapsible Accordions in HTML Details summaries */
-    .faqs-accordions {
-      padding: 24px 20px;
-      background-color: #fcfbf9;
-      border-top: 1px solid var(--color-border);
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .faqs-section-title {
-      font-family: var(--font-serif);
-      color: var(--color-blue-dark);
-      font-size: 18px;
-      text-align: center;
-      margin-bottom: 16px;
-      font-weight: bold;
-    }
-
-    details {
-      background-color: var(--color-bg-white);
-      border: 1px solid var(--color-border);
-      border-radius: 8px;
-      margin-bottom: 10px;
-      padding: 4px;
-    }
-
-    summary {
-      font-size: 13.5px;
-      font-weight: 700;
-      color: var(--color-blue-dark);
-      padding: 12px;
-      cursor: pointer;
-      user-select: none;
-      outline: none;
-      list-style-position: inside;
-    }
-
-    details[open] summary {
-      border-bottom: 1px solid var(--color-border);
-      margin-bottom: 8px;
-    }
-
-    .faq-answer {
-      font-size: 13.5px;
-      line-height: 1.5;
-      padding: 12px;
-      color: var(--color-text-main);
-    }
-
-    /* Full-Screen Content Modules styled like salesletter screenshots */
-    .sales-section-divider {
-      padding: 36px 20px;
-      border-bottom: 1px solid var(--color-border);
-    }
-
-    .sales-section-divider.bg-dark {
-      background-color: var(--color-blue-dark);
-      color: white;
-    }
-
-    .sales-section-divider.bg-beige {
-      background-color: var(--color-bg-accent);
-    }
-
-    .content-badge-warning {
-      color: var(--color-red);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    .content-badge-solution {
-      color: var(--color-teal);
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 8px;
-      display: inline-block;
-    }
-
-    .sales-module-title {
-      font-family: var(--font-serif);
-      color: var(--color-blue-dark);
-      font-size: 20px;
-      font-weight: 700;
-      line-height: 1.3;
-      margin-bottom: 14px;
-    }
-
-    .sales-module-title.white-text {
-      color: white;
-    }
-
-    .sales-module-text {
-      font-size: 14px;
-      line-height: 1.6;
-      color: var(--color-text-main);
-      margin-bottom: 16px;
-    }
-
-    .sales-module-text.light-text {
-      color: #e2e8f0;
-    }
-
-    .sales-img-wrapper {
-      margin: 16px 0;
-    }
-
-    .sales-img {
-      width: 100%;
-      height: auto;
-      border-radius: 8px;
-      display: block;
-    }
-
-    .sales-image-caption {
-      font-size: 12px;
-      text-align: center;
-      color: var(--color-text-muted);
-      font-style: italic;
-      margin-top: 8px;
-    }
-
-    /* Orange dilemma pullout box */
-    .orange-dilemma-box {
-      border: 2px dashed rgba(217, 119, 6, 0.4);
-      background-color: #fffbeb;
-      border-radius: 8px;
-      padding: 16px;
-      margin: 20px 0;
-      color: #92400e;
-    }
-
-    .orange-dilemma-title {
-      font-size: 13px;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      margin-bottom: 8px;
-    }
-
-    .orange-dilemma-bullet {
-      font-size: 13px;
-      line-height: 1.5;
-      margin-bottom: 10px;
-    }
-
-    .orange-dilemma-bullet:last-child {
-      margin-bottom: 0;
-    }
-
-    /* Green life-after highlight box */
-    .green-outcome-box {
-      border-left: 4px solid var(--color-teal);
-      background-color: var(--color-teal-light);
-      padding: 16px;
-      border-radius: 0 8px 8px 0;
-      margin: 20px 0;
-    }
-
-    .green-outcome-title {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: var(--color-teal-dark);
-      margin-bottom: 6px;
-    }
-
-    /* Included stack lists */
-    .pack-include-stack {
-      margin: 24px 0;
-    }
-
-    .pack-card {
-      background-color: var(--color-bg-white);
-      border: 1px solid var(--color-border);
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 16px;
-      position: relative;
-    }
-
-    .pack-pill-status {
-      display: inline-block;
-      font-size: 9px;
-      font-weight: bold;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-bottom: 10px;
-    }
-
-    .pack-pill-status.main {
-      background-color: #dbeafe;
-      color: #1e40af;
-    }
-
-    .pack-pill-status.bonus {
-      background-color: #fef3c7;
-      color: #92400e;
-    }
-
-    .pack-card-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 10px;
-    }
-
-    .pack-card-title {
-      font-family: var(--font-serif);
-      font-size: 15.5px;
-      font-weight: bold;
-      color: var(--color-blue-dark);
-      line-height: 1.3;
-    }
-
-    .pack-card-value {
-      font-size: 12.5px;
-      font-weight: bold;
-      color: var(--color-text-muted);
-    }
-
-    .pack-card-value.free {
-      color: #16a34a;
-    }
-
-    .pack-card-desc {
-      font-size: 13px;
-      color: var(--color-text-main);
-      line-height: 1.5;
-    }
-
-    /* Core pricing checkout bottom box */
-    .checkout-total-box {
-      background-color: var(--color-blue-dark);
-      color: white;
-      border-radius: 16px;
-      padding: 24px;
-      text-align: center;
-      margin: 32px 0;
-    }
-
-    .total-title {
-      font-size: 13px;
-      color: #94a3b8;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .total-old-v {
-      font-size: 14px;
-      text-decoration: line-through;
-      color: #64748b;
-      margin-top: 4px;
-    }
-
-    .total-new-v {
-      font-size: 28px;
-      font-weight: bold;
-      color: white;
-      margin-top: 4px;
-    }
-
-    .total-savings-h {
-      display: inline-block;
-      font-size: 11px;
-      background-color: rgba(239, 68, 68, 0.2);
-      color: #fca5a5;
-      padding: 4px 10px;
-      border-radius: 100px;
-      font-weight: bold;
-      margin: 10px 0 16px 0;
-    }
-
-    .quote-big-serif {
-      font-family: var(--font-serif);
-      font-size: 17px;
-      font-style: italic;
-      color: var(--color-blue-dark);
-      line-height: 1.5;
-      text-align: center;
-      padding: 24px;
-      margin: 28px 0;
-    }
-
-    /* Bottom Navy block */
-    .bottom-f-block {
-      background-color: var(--color-blue-dark);
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-
-    .bottom-f-links {
-      border-top: 1px solid rgba(255,255,255,0.1);
-      margin-top: 24px;
-      padding-top: 16px;
-      display: flex;
-      justify-content: center;
-      gap: 12px;
-      font-size: 11px;
-      color: #94a3b8;
-    }
-
-    .bottom-f-links a {
-      color: #cbd5e1;
-      text-decoration: none;
-    }
-  </style>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Un solo cambio puede transformar toda la infancia de tu hijo — El Mundo Interior</title>
+<meta name="description" content="Laura Gómez, maestra y madre, comparte el método que ayudó a su hijo introvertido a ganar confianza y superar el bullying."/>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1129923640199172');
+fbq('track','PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1129923640199172&ev=PageView&noscript=1"/></noscript>
+<!-- End Meta Pixel Code -->
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --primary:#1f3a5f;
+  --secondary:#6ba292;
+  --cta:#3d8b7a;
+  --cta-hover:#2d6b5a;
+  --fg:#1a1a1a;
+  --fg-light:#444;
+  --muted:#f5f4f0;
+  --border:#e0ddd6;
+  --serif:Georgia,serif;
+  --sans:Arial,sans-serif;
+  --display:'Helvetica Neue',Arial,sans-serif;
+  --max:680px;
+}
+body{font-family:var(--sans);color:var(--fg);background:#fff;font-size:17px;line-height:1.75}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+.topbar{background:var(--primary);color:#fff;text-align:center;padding:10px 20px;font-family:var(--display);font-size:0.75rem;font-weight:600;letter-spacing:0.06em;text-transform:uppercase}
+header{border-bottom:1px solid var(--border);background:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:1.1rem;font-weight:700;color:var(--primary)}
+.logo-dot{width:32px;height:32px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.logo-dot svg{width:16px;height:16px;fill:#fff}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-family:var(--display);font-weight:700;cursor:pointer;border:none;padding:11px 24px;font-size:0.85rem;transition:all .2s;background:var(--cta);color:#fff;text-decoration:none}
+.btn:hover{background:var(--cta-hover);transform:translateY(-1px)}
+.article-header{max-width:var(--max);margin:0 auto;padding:48px 24px 0}
+.breadcrumb{font-size:0.78rem;color:#888;font-family:var(--display);margin-bottom:20px}
+.breadcrumb span{color:var(--primary)}
+.article-category{display:inline-block;background:var(--primary);color:#fff;font-family:var(--display);font-size:0.7rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:4px 14px;border-radius:999px;margin-bottom:16px}
+.article-title{font-family:var(--serif);font-size:clamp(1.8rem,5vw,2.6rem);font-weight:800;line-height:1.18;color:var(--fg);margin-bottom:20px}
+.article-meta{display:flex;align-items:center;gap:16px;font-size:0.82rem;color:#888;padding-bottom:24px;border-bottom:2px solid var(--border);font-family:var(--display);flex-wrap:wrap}
+.article-meta strong{color:var(--fg)}
+.author-box{max-width:var(--max);margin:24px auto;padding:0 24px}
+.author-inner{display:flex;align-items:center;gap:16px;background:var(--muted);border:1px solid var(--border);border-radius:12px;padding:16px 20px}
+.author-inner img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.author-info{font-size:0.85rem;color:var(--fg-light);font-family:var(--display)}
+.author-info strong{display:block;color:var(--fg);font-size:0.9rem;margin-bottom:2px}
+.social-proof{background:var(--muted);border:1px solid var(--border);border-radius:12px;padding:16px 20px;max-width:var(--max);margin:16px 24px 0;display:flex;align-items:center;gap:14px}
+@media(min-width:728px){.social-proof{margin:16px auto 0}}
+.avatars{display:flex}
+.avatars span{width:32px;height:32px;border-radius:50%;border:2px solid #fff;margin-left:-8px;display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;font-family:var(--display)}
+.avatars span:first-child{margin-left:0;background:var(--primary)}
+.avatars span:nth-child(2){background:#5a8a7a}
+.avatars span:nth-child(3){background:#8ab4a8}
+.sp-text{font-size:0.85rem;color:var(--fg-light);font-family:var(--display)}
+.sp-text strong{color:var(--fg)}
+.article-body{max-width:var(--max);margin:0 auto;padding:0 24px}
+.article-body p{margin-bottom:1.3em;color:var(--fg-light)}
+.article-body p strong{color:var(--fg);font-weight:700}
+.article-body h2{font-family:var(--serif);font-size:1.5rem;font-weight:700;color:var(--fg);margin:2em 0 0.6em;line-height:1.3}
+.pull-quote{border-left:4px solid var(--primary);background:linear-gradient(135deg,rgba(31,58,95,0.04),rgba(107,162,146,0.04));padding:24px 28px;margin:2em 0;border-radius:0 12px 12px 0}
+.pull-quote p{font-family:var(--serif);font-size:1.15rem;font-style:italic;color:var(--fg);margin:0;line-height:1.6}
+.highlight-box{background:var(--muted);border:1px solid var(--border);border-radius:12px;padding:24px 28px;margin:2em 0}
+.highlight-box ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+.highlight-box ul li{display:flex;align-items:flex-start;gap:10px;color:var(--fg-light);font-size:0.95rem}
+.highlight-box ul li::before{content:"→";color:var(--primary);font-weight:700;flex-shrink:0;margin-top:2px}
+.article-img{margin:2em 0;border-radius:12px;overflow:hidden}
+.article-img img{width:100%;object-fit:cover;max-height:420px}
+.article-img figcaption{font-size:0.78rem;color:#999;margin-top:8px;font-family:var(--display);text-align:center}
+.cta-inline{background:linear-gradient(135deg,var(--primary),#162d4a);color:#fff;border-radius:16px;padding:32px 28px;margin:2.5em 0;text-align:center}
+.cta-inline h3{font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:8px;line-height:1.3}
+.cta-inline p{font-size:0.9rem;color:rgba(255,255,255,0.8);margin-bottom:20px}
+.cta-inline .btn-white{background:#fff;color:var(--primary)}
+.cta-inline .btn-white:hover{background:#f0f0f0}
+.cta-inline .cta-note{font-size:0.75rem;color:rgba(255,255,255,0.6);margin-top:10px;margin-bottom:0}
+.book-showcase{display:flex;align-items:center;gap:28px;background:var(--muted);border:1px solid var(--border);border-radius:16px;padding:28px;margin:2.5em 0;flex-wrap:wrap}
+.book-showcase-img-wrap img{width:140px;border-radius:8px;box-shadow:0 12px 32px rgba(31,58,95,0.25)}
+.book-showcase-content h3{font-family:var(--serif);font-size:1.2rem;font-weight:700;color:var(--fg);margin-bottom:10px}
+.book-showcase-content ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.book-showcase-content ul li{display:flex;align-items:flex-start;gap:8px;font-size:0.9rem;color:var(--fg-light)}
+.book-showcase-content ul li::before{content:"✓";color:var(--cta);font-weight:700;flex-shrink:0}
+.comments{max-width:var(--max);margin:0 auto;padding:0 24px 60px}
+.comments h2{font-family:var(--serif);font-size:1.4rem;font-weight:700;margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--border)}
+.comment{display:flex;gap:14px;margin-bottom:16px;background:#fff;border:1px solid var(--border);border-radius:12px;padding:18px 20px;box-shadow:0 2px 8px rgba(0,0,0,0.04)}
+.comment-avatar{width:44px;height:44px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:0.85rem;color:#fff;border:2px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,0.15)}
+.comment-body{flex:1}
+.comment-header{display:flex;align-items:center;gap:8px;margin-bottom:6px;flex-wrap:wrap}
+.comment-name{font-family:var(--display);font-weight:700;font-size:0.9rem;color:var(--fg)}
+.comment-verified{font-size:0.68rem;color:var(--cta);font-family:var(--display);font-weight:600;background:rgba(61,139,122,0.1);padding:2px 8px;border-radius:999px}
+.comment-stars{color:#e07a4a;font-size:0.78rem;letter-spacing:1px}
+.comment-text{font-size:0.9rem;color:var(--fg-light);line-height:1.6;margin:0}
+.final-cta{background:var(--primary);color:#fff;padding:60px 24px;text-align:center}
+.final-cta-inner{max-width:600px;margin:0 auto}
+.final-cta h2{font-family:var(--serif);font-size:clamp(1.6rem,4vw,2.2rem);font-weight:800;line-height:1.2;margin-bottom:16px}
+.final-cta p{color:rgba(255,255,255,0.8);margin-bottom:28px}
+.final-cta .cta-note{font-size:0.78rem;color:rgba(255,255,255,0.5);margin-top:12px}
+.final-img{width:100%;max-height:340px;object-fit:cover}
+footer{border-top:1px solid var(--border);padding:32px 24px;text-align:center}
+.footer-inner{max-width:var(--max);margin:0 auto}
+.footer-logo{font-family:var(--serif);font-size:1rem;font-weight:700;color:var(--primary);margin-bottom:12px}
+.footer-links{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-bottom:16px}
+.footer-links a{font-size:0.82rem;color:#999;font-family:var(--display)}
+.footer-copy{font-size:0.75rem;color:#bbb;font-family:var(--display)}
+@media(max-width:600px){.book-showcase{flex-direction:column}.book-showcase-img-wrap img{width:110px}}
+</style>
 </head>
 <body>
 
-  <div class="page-wrapper">
+<div class="topbar">Más de 10.000 padres ya confiaron en este método</div>
 
-    <!-- Top Announcement Bar -->
-    <div id="announce_top_check" class="announce-bar">
-      ✓ Garantía de devolución 7 días | ✓ Descarga inmediata | ✓ Pago 100% seguro | ✓ +1.200 familias argentinas
-    </div>
-
-    <!-- Sticky Navigation -->
-    <nav class="navbar" id="navbar_prod">
-      <a href="https://samuelvergaraa-alt.github.io/elmundointerior" class="logo-container">
-        <div class="logo-icon">E</div>
-        <span>El Mundo Interior</span>
-      </a>
-      <button class="cart-container" id="cart_indicator">
-        <svg class="cart-svg" viewBox="0 0 24 24">
-          <circle cx="9" cy="21" r="1"></circle>
-          <circle cx="20" cy="21" r="1"></circle>
-          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-        </svg>
-        <span class="cart-badge">1</span>
-      </button>
-    </nav>
-
-    <!-- Main Hero Details Area -->
-    <main class="product-hero" id="hero_area">
-      
-      <!-- Visual Gallery with Interactive Image Selector -->
-      <div class="hero-gallery">
-        <img id="main_product_image" src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/ChatGPT_Image_28_may_2026_01_53_39_p.m..png?v=1779988050" alt="Niño Introvertido, Niño Seguro — Pack Completo" class="sales-img" style="max-width: 310px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.12); margin-bottom: 16px; width: 100%; height: auto; display: block;">
-        
-        <div class="thumbnails-row" style="margin-top: 0;">
-          <div class="thumbnail-box active" onclick="changeMainImage('https://cdn.shopify.com/s/files/1/0699/4719/5510/files/ChatGPT_Image_28_may_2026_01_53_39_p.m..png?v=1779988050', this)">Pack</div>
-          <div class="thumbnail-box" onclick="changeMainImage('https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen_libro_portada.webp?v=1780901958', this)">Ebook</div>
-          <div class="thumbnail-box" onclick="changeMainImage('https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen6_ff27f488-6271-44c5-bbfa-c8551d7ffb0e.webp?v=1780901958', this)">Resultado</div>
-        </div>
-      </div>
-
-      <script>
-        function changeMainImage(src, activeTab) {
-          const mainImg = document.getElementById('main_product_image');
-          if (mainImg) {
-            mainImg.src = src;
-          }
-          const tabs = document.querySelectorAll('.thumbnail-box');
-          tabs.forEach(tab => tab.classList.remove('active'));
-          activeTab.classList.add('active');
-        }
-      </script>
-
-      <!-- Core product info and checkout rules -->
-      <div class="hero-details">
-        <div class="rating-line">
-          <span class="stars">★★★★★</span>
-          <span>4.8/5 • Más de 1.000 padres satisfechos</span>
-        </div>
-
-        <div class="product-category-tag">◆ PARA PADRES Y MADRES</div>
-
-        <h1 class="product-title">Niño Introvertido, Niño Seguro — Guía para Padres</h1>
-        
-        <p class="product-tagline">
-          Guía rápida para que tu hijo cuente todo — y sigas sin saber qué decirle cuando llega callado.
-        </p>
-
-        <p class="author-credit-inline">
-          Desarrollado por <strong>Laura Gómez</strong> — maestra con 20 años de experiencia y madre de 3 hijos — junto a psicólogos y terapeutas familiares.
-        </p>
-
-        <!-- Social Validation Badge for Argentina -->
-        <div class="argentina-badge-box">
-          🇦🇷 1.247 familias argentinas empezaron esta semana • ★★★★★ 4.8/5 - basado en descargas verificadas
-        </div>
-
-        <div class="bullet-benefits">
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <span><strong>Libro digital</strong> — lo leés desde el celular, tablet o computadora</span>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <span>Descarga inmediata directa al email registrado</span>
-          </div>
-          <div class="benefit-item">
-            <span class="benefit-check">✓</span>
-            <span>Para niños de entre 4 a 14 años de edad</span>
-          </div>
-        </div>
-
-        <!-- Pricing layout -->
-        <div class="pricing-hero-block" id="primary_price">
-          <div class="price-row">
-            <span class="price-old">$42.980</span>
-            <span class="price-new">$19.990</span>
-            <span class="pct-discount-badge">-50% OFF</span>
-          </div>
-          <p class="price-sub-caption">
-            *Cada día que tu hijo llega callado y cierra la puerta — es un día más construyendo la creencia de que no puede solo.*
-          </p>
-        </div>
-
-        <!-- Warning block / value lines -->
-        <div class="value-points-list">
-          <div class="value-point">
-            <span class="value-marker-warning">⚠️</span>
-            <span>Una sesión con psicólogo: $40.000. Este pack completo: $19.990 — con garantía de 7 días.</span>
-          </div>
-          <div class="value-point">
-            <span class="value-marker-check">✓</span>
-            <span><strong>¿Qué decirle exactamente</strong> cuando llega y dice "bien" — y vos sabés que no está bien</span>
-          </div>
-          <div class="value-point">
-            <span class="value-marker-check">✓</span>
-            <span>Para el niño que dice que está aburrido cuando en realidad se siente incómodo — y se cansa demasiado después del colegio</span>
-          </div>
-          <div class="value-point">
-            <span class="value-marker-check">✓</span>
-            <span>El error que cometen casi todos los padres con las mejores intenciones — y que este libro nombra desde la primera página</span>
-          </div>
-          <div class="value-point">
-            <span class="value-marker-check">✓</span>
-            <span>Frases concretas adaptadas a cada etapa — desde jardín (4-7) hasta preadolescencia (12-14)</span>
-          </div>
-          <div class="value-point">
-            <span class="value-marker-check">✓</span>
-            <span>Funciona aunque tu hijo lleve meses sin abrirse, sea muy cerrado o ya hayas probado de todo</span>
-          </div>
-          <div class="value-point">
-            <span class="value-marker-check">✓</span>
-            <span><strong>Aplicable esta noche</strong> — sin sesiones largas, sin tiempo adicional, sin teoría abstracta</span>
-          </div>
-        </div>
-
-        <!-- Big Buy Action Button -->
-        <a href="https://elmundointerior.myshopify.com/cart/43396377542774:1?storefront=true" class="btn-large-buy" id="btn_checkout_main">
-          QUIERO SABER QUÉ DECIRLE
-        </a>
-
-        <!-- Guarantee Statement -->
-        <div class="guarantee-box-white">
-          <svg class="guarantee-svg" viewBox="0 0 24 24">
-            <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 14h-2v-2h2zm0-4h-2V7h2z"></path>
-          </svg>
-          <div class="guarantee-text">
-            <strong>Garantía de devolución — 7 días sin preguntas.</strong> Si en 7 días no es lo que esperabas, te devolvemos el dinero. Sin vueltas ni explicaciones incómodas.
-          </div>
-        </div>
-
-        <!-- 4 tiny specifications cards -->
-        <div class="grid-benefits-4">
-          <div class="grid-benefit-card"><span class="tiny-icon">🔒</span> Pago seguro y cifrado</div>
-          <div class="grid-benefit-card"><span class="tiny-icon">🧠</span> Desarrollado con psicólogos</div>
-          <div class="grid-benefit-card"><span class="tiny-icon">📱</span> Ebook — tablet, celu o PC</div>
-          <div class="grid-benefit-card"><span class="tiny-icon">⭐</span> +1.000 padres conformes</div>
-        </div>
-
-      </div>
-
-    </main>
-
-    <!-- FAQs Interactive Collapsible Block -->
-    <section class="faqs-accordions" id="faq_section">
-      <h2 class="faqs-section-title">¿Cómo recibo el libro?</h2>
-      
-      <details>
-        <summary>¿Cómo recibo el libro después de comprar?</summary>
-        <div class="faq-answer">
-          Recibís un mail inmediatamente después de tu compra con un link de descarga directa. Podés abrirlo en tu celular, tablet o computadora con un solo click. No necesitás ninguna aplicación extraña o de pago.
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Para qué edad es adecuado?</summary>
-        <div class="faq-answer">
-          Es ideal para padres con hijos entre los 4 y los 14 años de edad. Encontrarás secciones dedicadas con frases y estrategias de comunicación específicas para el jardín de infantes, la primaria y la preadolescencia.
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Funciona si mi hijo es muy tímido o cerrado?</summary>
-        <div class="faq-answer">
-          Sí, está diseñado precisamente para niños que tienden a cerrarse. El método se enfoca en cambiar tu forma de comunicarte, lo que genera un espacio seguro para que hablen sin sentirse presionados.
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Cuánto tiempo necesito dedicarle por día?</summary>
-        <div class="faq-answer">
-          0 minutos adicionales. No es un programa con ejercicios o tareas para tu hijo. Es una guía práctica que cambiás en tu vocabulario y gestos diarios mientras cenan, caminan al colegio o van en el auto.
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Y si no me sirve? ¿Puedo pedir la plata de vuelta?</summary>
-        <div class="faq-answer">
-          Sí, contás con garantía total de 7 días. Si por cualquier motivo sentís que no es lo que esperabas, nos escribís un mail a laura.gomez.ayuda@gmail.com y te devolvemos el 100% de tu dinero inmediatamente. Sin preguntas complejas.
-        </div>
-      </details>
-
-      <details>
-        <summary>¿Vale la inversión?</summary>
-        <div class="faq-answer">
-          El costo de la guía es menor al de un almuerzo o apenas la mitad de una sola consulta con un terapeuta. Sin embargo, te da un método aplicable de por vida todas las noches en tu casa.
-        </div>
-      </details>
-    </section>
-
-    <!-- Visual Sales modules -->
-    
-    <!-- Module 1: El problema -->
-    <section class="sales-section-divider">
-      <span class="content-badge-warning">⚠️ El Problema</span>
-      <h2 class="sales-module-title">Tu hijo no se está cerrando. Se está protegiendo.</h2>
-      
-      <p class="sales-module-text">Llegó del colegio. Dejó la mochila. Dijo "bien". Y fue directo al cuarto.</p>
-      <p class="sales-module-text">Vos te quedaste en la cocina con esa sensación que ya conocés. Esa que está cada tarde y que no sabés muy bien cómo nombrar. Esa de de impotencia de "Algo no está bien, tengo que hacer algo..."</p>
-      
-      <div class="sales-img-wrapper">
-        <img class="sales-img" src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen1_b7aa954f-9aa8-448b-b4ce-0ce6de9c1062.webp?v=1780901958" alt="Chico pensativo triste apoyado" loading="lazy" referrerPolicy="no-referrer">
-      </div>
-
-      <p class="sales-module-text">Esa noche, cuando él ya duerme, vos escribís preocupada en Google: <em>"mi hijo no me habla", "¿qué decirle?"</em>. Cerrás el celular sintiéndote culpable, sin saber exactamente qué comunicarle mañana.</p>
-      <p class="sales-module-text">Lo que pasa no es un problema de personalidad de tu hijo. Es que aprendió que cuando muestra lo que siente, los adultos que más ama se preocupan. Y como te quiere demasiado, prefiere guardar todo.</p>
-      <p class="sales-module-text">Dice que está "aburrido" cuando en realidad se siente incómodo. Se cansa sumamente rápido después de clase — no por esfuerzo físico, sino por la tremenda tensión mental de sostenerse solo.</p>
-      <p class="sales-module-text" style="font-weight: bold; font-style: italic;">"No es falta de confianza en vos. Es demasiado amor en un cuerpo chico que no sabe cómo expresarlo."</p>
-    </section>
-
-    <!-- Module 2: El error -->
-    <section class="sales-section-divider" style="background-color: #fafbfc;">
-      <span class="content-badge-warning">⚠️ El error que todos cometen</span>
-      <h2 class="sales-module-title">Hay una frase que le decís con todo el amor del mundo. Y sin saberlo, lo está cerrando más.</h2>
-      
-      <p class="sales-module-text">Cuando tu hijo llega triste y para consolarlo le decís <em>"Sos increíble, ellos no te conocen"</em>, su cerebro no procesa el elogio.</p>
-      <p class="sales-module-text">Procesa que la situación de que no hablen es tan grave que mamá necesita compensarlo de inmediato. Que de alguna forma, el mundo tiene peligro y hay que esperar.</p>
-
-      <div class="orange-dilemma-box">
-        <div class="orange-dilemma-title">Estás atrapada en un dilema que nadie nombra:</div>
-        <div class="orange-dilemma-bullet">👉 <strong>Si lo empujás</strong> — "<em>Andá, participá, mostrate fuerte</em>" — sentís que lo estás forzando a ser alguien que no es.</div>
-        <div class="orange-dilemma-bullet">👉 <strong>Si lo rescatás</strong> — "<em>No vayas si no querés, yo hablo con la maestra</em>" — sentís que lo estás sobreprotegiendo.</div>
-      </div>
-
-      <div class="sales-img-wrapper">
-        <img class="sales-img" src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen4_384657d0-a2e6-4e3f-80b3-3d86c8542fdb.webp?v=1780901959" alt="Abrazo cálido de madre a hijo" loading="lazy" referrerPolicy="no-referrer">
-      </div>
-
-      <p class="sales-module-text">No te culpes. Es que nadie nos enseña la diferencia entre <strong>consolar</strong> y <strong>acompañar</strong>. Consolar calma la angustia inmediata de hoy, pero ACOMPAÑAR es lo único que le construye la confianza para enfrentar el mañana.</p>
-    </section>
-
-    <!-- Module 3: La solución -->
-    <section class="sales-section-divider bg-beige">
-      <span class="content-badge-solution">✓ La solución</span>
-      <h2 class="sales-module-title">Cuando sabés exactamente qué decirle, todo cambia.</h2>
-      
-      <p class="sales-module-text">No se trata de cambiar o arreglar la personalidad de tu hijo. Se trata de cambiar tu lenguaje en los momentos que realmente cuentan.</p>
-      <p class="sales-module-text">La seguridad de un niño no se construye con teorías ni en un consultorio frío una vez por semana. Se cimenta en la cocina, en la cena, camino al colegio, o en el beso de buenas noches.</p>
-
-      <div style="margin-top: 12px; margin-bottom: 12px;">
-        <div class="benefit-item">
-          <span class="benefit-check">✓</span>
-          <span><strong>Qué decirle</strong> cuando llega callado — sin inducir a que se cierre</span>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-check">✓</span>
-          <span><strong>Qué preguntarle</strong> cuando dice "bien" — para abrir el diálogo real</span>
-        </div>
-        <div class="benefit-item">
-          <span class="benefit-check">✓</span>
-          <span><strong>Cómo responderle</strong> cuando se siente excluido — sin debilitar su carácter</span>
-        </div>
-      </div>
-
-      <div class="green-outcome-box">
-        <div class="green-outcome-title">¿Cómo queda la vida después?</div>
-        <p class="sales-module-text" style="margin-bottom: 0;">Tu hijo llega del colegio. Deja la mochila. Y antes de encerrarse, te cuenta espontáneamente algo gracioso que pasó en clase. Solo. Sin que lo persigas a preguntas. Eso no es magia. Es lo que ocurre cuando manejás el vocabulario correcto.</p>
-      </div>
-
-      <div class="sales-img-wrapper">
-        <img class="sales-img" src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen6_ff27f488-6271-44c5-bbfa-c8551d7ffb0e.webp?v=1780901958" alt="Madre e hijo contentos sonriendo juntos en primer plano" loading="lazy" referrerPolicy="no-referrer">
-        <p class="sales-image-caption">Este método funciona especialmente si tu hijo es reservado, sensible u observador — porque no intenta cambiarlo. Intenta acompañarlo siendo quien es.</p>
-      </div>
-    </section>
-
-    <!-- Module 4: Lo que recibís -->
-    <section class="sales-section-divider">
-      <span class="content-badge-solution">◆ Lo que recibís de inmediato</span>
-      <h2 class="sales-module-title">Todo lo que incluye tu compra hoy</h2>
-      
-      <div class="pack-include-stack">
-        
-        <!-- Part 1 -->
-        <div class="pack-card">
-          <span class="pack-pill-status main">PROGRAMA CENTRAL</span>
-          <div class="pack-card-header">
-            <span class="pack-card-title">Niño Introvertido, Niño Seguro — Guía para Padres</span>
-            <span class="pack-card-value">$25.000</span>
-          </div>
-          <p class="pack-card-desc">+80 páginas con el método completo de Laura Gómez para acompañar a tu hijo introvertido a desarrollar confianza y seguridad social, sin forzarlo a ser alguien que no es.</p>
-        </div>
-
-        <!-- Part 2 -->
-        <div class="pack-card">
-          <span class="pack-pill-status bonus">BONO GRATIS DE COMPRA</span>
-          <div class="pack-card-header">
-            <span class="pack-card-title">Bono 1: Cuaderno de Trabajo — Momentos Clave</span>
-            <span class="pack-card-value free">GRATIS</span>
-          </div>
-          <p class="pack-card-desc">Frases milimétricas para momentos complejos: acoso escolar, burlas en el recreo, exclusión en los cumpleaños, rechazo del grupo y aislamiento voluntario en el cuarto.</p>
-        </div>
-
-        <!-- Part 3 -->
-        <div class="pack-card">
-          <span class="pack-pill-status bonus">BONO GRATIS DE COMPRA</span>
-          <div class="pack-card-header">
-            <span class="pack-card-title">Bono 2: Calendario Práctico de Acción — 30 Días</span>
-            <span class="pack-card-value free">GRATIS</span>
-          </div>
-          <p class="pack-card-desc">Un plan diario para reorganizar tu forma de hablarles. Acciones específicas y discretas divididas en 4 semanas para instalar un ambiente de confianza duradero en casa.</p>
-        </div>
-
-      </div>
-
-      <!-- Core final checkout calculation block -->
-      <div class="checkout-total-box" id="bottom_pricing_box">
-        <div class="total-title">Valor total del pack</div>
-        <div class="total-old-v">$42.980 ARS</div>
-        <div class="total-new-v">$19.990 ARS</div>
-        <div class="total-savings-h">Ahorrás $22.990 — más del 50% de descuento</div>
-
-        <a href="https://elmundointerior.myshopify.com/cart/43396377542774:1?storefront=true" class="btn-large-buy" style="background-color: var(--color-teal); width: 100%; border: none;">
-          QUIERO EMPEZAR ESTA NOCHE
-        </a>
-        <p class="price-sub-caption" style="color: #cbd5e1; margin-top: 8px;">
-          ✓ Garantía de devolución de 7 días completa • Edición digital para celular o tablet
-        </p>
-      </div>
-    </section>
-
-    <!-- Deep philosophical final quote -->
-    <div class="quote-big-serif">
-      “Cada día que pasa sin esto, tu hijo construye solo la creencia de que no encaja. Hoy podés cambiar eso.”
-    </div>
-
-    <!-- Final Callout Actions footer -->
-    <div class="bottom-f-block">
-      <h2 class="sales-module-title white-text">Tu hijo necesita estas herramientas hoy</h2>
-      <p style="font-size: 13px; color: #cbd5e1; margin-bottom: 24px; max-width: 440px; margin-left: auto; margin-right: auto;">
-        No esperes a que el bullying o la exclusión dejen una huella más profunda. Empezá hoy con un método cálido, respetuoso y comprobado.
-      </p>
-
-      <a href="https://elmundointerior.myshopify.com/cart/43396377542774:1?storefront=true" class="btn-large-buy" style="background-color: var(--color-teal); border: none; max-width: 400px; margin-left: auto; margin-right: auto;">
-        SÍ, QUIERO EMPEZAR HOY
-      </a>
-      
-      <p style="font-size: 10.5px; color: #94a3b8; margin-top: 12px;">
-        Acceso Inmediato en PDF • Garantía de Reembolso de 7 días
-      </p>
-
-      <div class="bottom-f-links" id="bottom_policies">
-        <strong>El Mundo Interior</strong>
-        <div>
-          <a href="#">Términos y condiciones</a> | 
-          <a href="#">Privacidad</a>
-        </div>
-      </div>
-    </div>
-
+<header>
+  <div class="logo">
+    <div class="logo-dot"><svg viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg></div>
+    El Mundo Interior
   </div>
+  <a href="https://samuelvergaraa-alt.github.io/elmundointerior/producto.html" class="btn">Consultar disponibilidad</a>
+</header>
+
+<div class="article-header">
+  <div class="breadcrumb">Inicio › Familias › <span>Seguridad emocional</span></div>
+  <div class="article-category">Crianza consciente</div>
+  <h1 class="article-title">UN SOLO CAMBIO EN TU COMPORTAMIENTO PUEDE TRANSFORMAR TODA LA INFANCIA DE TU HIJO</h1>
+  <div class="article-meta">
+    <span>Lunes, 12 de mayo de 2026 | 08:30 hs</span>
+    <span>👁 14.267 lecturas</span>
+    <span>Por <strong>Laura Gómez*</strong>, Maestra | Madre de 3 hijos</span>
+  </div>
+</div>
+
+<div class="author-box">
+  <div class="author-inner">
+    <img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen2_8804bb84-b57f-4312-acd0-6f8928de6f8a.webp?v=1780901958" alt="Laura Gómez" width="56" height="56" fetchpriority="high"/>
+    <div class="author-info">
+      <strong>Laura Gómez</strong>
+      Maestra con más de 20 años de experiencia · Madre de 3 hijos · Especialista en desarrollo infantil
+    </div>
+  </div>
+</div>
+
+<div class="social-proof">
+  <div class="avatars"><span>AL</span><span>MR</span><span>JP</span></div>
+  <div class="sp-text"><strong>Más de 10.000 padres</strong> ya confían en nosotros</div>
+</div>
+
+<div class="article-body" style="margin-top:32px">
+  <p>Mi nombre es <strong>Laura</strong>.</p>
+  <p>Soy maestra con <strong>más de 20 años de experiencia</strong> trabajando con niños y jóvenes — y madre de <strong>tres hijos</strong>, que crío hace años enfrentando cada día los desafíos reales de la crianza moderna.</p>
+  <p>Trabajo diariamente con niños y familias. Veo sus emociones, sus dificultades, su agotamiento y su impotencia. Y también veo lo que a primera vista suele quedar invisible: la sobrecarga, el miedo, la falta de seguridad y la necesidad profunda de ser vistos — tanto en los niños como en los adultos.</p>
+
+  <h2>Si tu hijo…</h2>
+  <div class="highlight-box">
+    <ul>
+      <li>Vuelve del colegio y cuando le preguntás "¿Cómo te fue?" responde solo "Bien" — y cierra la puerta del cuarto.</li>
+      <li>Camina solo en los recreos o se queda parado mirando cómo juegan otros niños… pero no se acerca. No pregunta. Solo observa.</li>
+      <li>En clase sabe la respuesta — se le nota en la cara — pero no levanta la mano. Porque quizás se equivoque. Porque quizás todos se rían.</li>
+      <li>Dice: <em>"Soy tonto." "Los otros son mejores." "De todas formas no puedo." "¿Para qué intentarlo?"</em></li>
+      <li>Llega del colegio y dice "No pasó nada" — aunque sabés perfectamente que alguien se burló de él otra vez.</li>
+      <li>Se niega a ir a cumpleaños o actividades. No porque no quiera. Sino porque tiene miedo de volver a quedarse al margen.</li>
+    </ul>
+  </div>
+
+  <figure class="article-img">
+    <img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen3_436d0cea-520b-4f4a-b5d0-3d6a5aba23a5.webp?v=1780901958" alt="Niño solo en el recreo" width="637" height="356" loading="lazy"/>
+    <figcaption>El dolor silencioso que muchos padres reconocen cada tarde</figcaption>
+  </figure>
+
+  <div class="pull-quote"><p>"Eso no es un rasgo de carácter. No es una fase. Y muy rara vez se resuelve solo con el tiempo."</p></div>
+
+  <p>Lo sabemos. Porque nosotros mismos lo vivimos.</p>
+
+  <figure class="article-img">
+    <img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen1_b7aa954f-9aa8-448b-b4ce-0ce6de9c1062.webp?v=1780901958" alt="Niño introvertido mirando por la ventana" width="637" height="355" loading="lazy"/>
+    <figcaption>Nuestro hijo fue durante mucho tiempo ese niño callado junto a la ventana</figcaption>
+  </figure>
+
+  <p>Nuestro hijo fue durante mucho tiempo ese niño callado. El que ante la invitación de un amigo respondía: <em>"No quiero ir"</em> — y en sus ojos veía por un segundo algo parecido a la esperanza… antes de que se apagara.</p>
+  <p>El que una noche, mientras yo lavaba los platos, me preguntó:</p>
+  <div class="pull-quote"><p><strong>"Mamá, ¿soy tonto?"</strong></p></div>
+  <p>Tenía ocho años. Intenté hablar con él. Consolarlo. Explicarle. Le dije: <em>"Vos podés." "No te preocupes." "Sos genial."</em> Y vi que no funcionaba.</p>
+
+  <figure class="article-img">
+    <img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen4_384657d0-a2e6-4e3f-80b3-3d86c8542fdb.webp?v=1780901959" alt="Madre intentando conectar con su hijo" width="637" height="356" loading="lazy"/>
+    <figcaption>Intenté de todo. Pero las palabras solas no alcanzaban.</figcaption>
+  </figure>
+
+  <p>Fue entonces cuando mi marido y yo decidimos buscar ayuda de verdad.</p>
+  <h2>Fuimos a psicólogos…</h2>
+  <p>Consulta tras consulta. <strong>$40.000 por hora.</strong> Una docena de sesiones. Buenos consejos. Palabras importantes. Pero en cuanto salíamos del consultorio, volvíamos a estar solos con el día a día.</p>
+
+  <figure class="article-img">
+    <img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen5_4a675993-3e37-4fdb-a297-3cca30ae1d7f.webp?v=1780901958" alt="Pareja preocupada de noche" width="637" height="356" loading="lazy"/>
+    <figcaption>A las 23:00, con el té frío, sin saber qué hacer</figcaption>
+  </figure>
+
+  <div class="pull-quote"><p><strong>"¿Qué le digo esta noche cuando llegue del colegio y me responda 'bien' otra vez?"</strong></p></div>
+
+  <p>Gastamos mucho dinero en esas consultas. Y no nos arrepentimos — nos dieron una base. Pero una base no alcanza cuando todos los días construís una casa — piedra a piedra — en la cocina, en la cena, en el auto, camino al colegio.</p>
+  <p><strong>Necesitábamos algo que pudiéramos tener siempre cerca.</strong> Algo que pudiéramos leer a las 23:00, cuando el niño ya duerme y nos preguntamos si lo estamos haciendo bien.</p>
+  <p>Y lo encontramos. Poco a poco. <strong>Durante más de un año reunimos conocimiento de psicólogos, pedagogos y terapeutas familiares.</strong> Lo pusimos a prueba. Fallamos. Y volvimos a empezar.</p>
+  <p>El hijo que durante meses no quería salir de casa, un día le escribió por su cuenta a un amigo para caminar juntos después del colegio. El hijo que siempre decía <em>"de todas formas no puedo"</em> — empezó a intentarlo.</p>
+  <p>Por eso nació este libro: <strong>"Niño Introvertido, Niño Seguro."</strong></p>
+
+  <div class="book-showcase">
+    <div class="book-showcase-img-wrap" onclick="window.location.href='https://samuelvergaraa-alt.github.io/elmundointerior/producto.html'">
+      <img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen_libro_portada.webp?v=1780901958" alt="Niño Introvertido, Niño Seguro" width="140" loading="lazy"/>
+    </div>
+    <div class="book-showcase-content">
+      <h3>¿Qué vas a encontrar en el libro?</h3>
+      <ul>
+        <li>Respuestas concretas para cuando tu hijo dice <em>"soy tonto"</em> o <em>"de todas formas no puedo"</em></li>
+        <li>Qué comportamientos tuyos — sin querer, por amor — pueden estar bloqueando a tu hijo</li>
+        <li>Cómo hablarle a un niño que se cerró, para que empiece a hablar solo</li>
+        <li>Acciones diarias aplicables esta noche, en la cena, mañana antes del colegio</li>
+        <li>Cómo responder ante el fracaso para construir resiliencia real</li>
+        <li>Cómo construir confianza desde adentro — no con elogios vacíos</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-inline">
+    <h3>Más de 10.000 padres ya confían en este método</h3>
+    <p>Guía digital de +70 páginas. Acceso inmediato tras la compra.</p>
+    <a href="https://samuelvergaraa-alt.github.io/elmundointerior/producto.html" class="btn btn-white" style="background:#fff;color:#1f3a5f;">CONSULTAR DISPONIBILIDAD AHORA</a>
+    <p class="cta-note">Pago 100% seguro · Descarga inmediata · Garantía de 7 días</p>
+  </div>
+
+  <h2>Tu hijo llega hoy del colegio.</h2>
+  <p>Va a decir "bien" o encogerse de hombros. Y va a cerrar la puerta otra vez. Y vos vas a volver a sentir esa inquietud que regresa cada tarde:</p>
+  <div class="pull-quote"><p><strong>"Algo no está bien. Tengo que hacer algo."</strong></p></div>
+  <p>Esa voz tiene razón. Tu hijo no va a venir a pedirte ayuda. Va a esperar que <strong>vos</strong> lo veas. Que <strong>vos</strong> des el primer paso. <strong>Ya lo estás viendo.</strong></p>
+  <p>Cada día que tu hijo cree que es peor que los demás — es un día de más.</p>
+  <p style="text-align:center;font-size:1.1rem;font-weight:700;color:var(--primary);margin:1.5em 0">👇 este libro es exactamente para vos 👇</p>
+  <div style="text-align:center;margin-bottom:3em">
+    <a href="https://samuelvergaraa-alt.github.io/elmundointerior/producto.html" class="btn" style="padding:16px 36px;font-size:1rem">CONSULTAR DISPONIBILIDAD AHORA</a>
+  </div>
+</div>
+
+<img src="https://cdn.shopify.com/s/files/1/0699/4719/5510/files/imagen6_ff27f488-6271-44c5-bbfa-c8551d7ffb0e.webp?v=1780901958" alt="Niños felices volviendo del colegio" width="721" height="403" class="final-img" loading="lazy"/>
+
+<div class="comments">
+  <h2>💬 Comentarios</h2>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#1f3a5f,#2d5a8f)">AM</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Ana Martínez</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Mi hijo (9) es exactamente así. Cada día ese "bien" — y después puerta cerrada. Tuve lágrimas en los ojos leyendo esto porque pensaba que solo nos pasaba a nosotros. ¿A alguien le cambió algo de verdad?</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#3d7a6a,#5a9a8a)">MR</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Melisa Rodríguez</span><span class="comment-verified">✓ Compradora verificada</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">En nuestro caso sí. Mi hija tiene 10 años. Los primeros capítulos me hicieron ver que, por amor, le decía cosas que la cerraban más todavía. Ahora hablamos diferente. Ella también.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#5a8a7a,#7aaa9a)">BL</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Beatriz López</span><span class="comment-verified">✓ Compradora verificada</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">La psicóloga nos dijo exactamente lo mismo que dice el libro — solo que después de 6 sesiones a $40.000 cada una, todavía no sabíamos qué hacer concretamente en casa. Acá están las frases que realmente podés decir.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#2a5a8a,#3a7aaa)">TC</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Tomás Castillo</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">¿Qué tan rápido llega el libro? Mi hija tiene colegio mañana y no sé qué decirle esta noche. 😔</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#4a7a9a,#5a8aaa)">HV</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Héctor Vargas</span><span class="comment-verified">✓ Comprador verificado</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Llega como libro digital directo al mail después de la compra. Lo tuve en 2 minutos en el celular. Si llegaste hasta acá, ya estás haciendo algo que importa. 👍</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#1f3a5f,#2d5080)">JG</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Javier Gómez</span><span class="comment-verified">✓ Comprador verificado</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Nuestro hijo menor (8) me preguntó: "Papá, ¿soy tonto?" — no supe qué decirle. Hoy llegó del colegio y contó solo lo que pasó en el recreo. Solo. Mi mujer lloró.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#6ba292,#8ac2b2)">SP</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Sofía Pereyra</span><span class="comment-verified">✓ Compradora verificada</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Este libro lo necesitaba cuando mi hija mayor entró a 3ro. Nadie me explicó tan concretamente QUÉ decirle a la noche en la cena. Ahora lo leo para mi hijo menor. Esta vez estoy preparada.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#3d5a7a,#5a7a9a)">RS</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Rodrigo Sánchez</span><span class="comment-verified">✓ Comprador verificado</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Mi hijo tiene 5 años y ya se niega a ir al jardín. Pensé que era demasiado chico para este libro. Empecé el capítulo 1 y en la página 3 tuve que parar porque me di cuenta que llevaba meses diciéndole exactamente lo que no tenía que decirle.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#7a4a6a,#9a6a8a)">CI</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Carolina Ibáñez</span><span class="comment-verified">✓ Compradora verificada</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Lo descargué a las 23:30. A las 2am seguía leyendo. Al día siguiente mi hijo llegó del colegio y en lugar de preguntarle "¿cómo te fue?" probé una de las preguntas del libro. Se quedó parado. Me miró. Y habló diez minutos seguidos.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#4a6a9a,#6a8aba)">VR</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Verónica R.</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Mi hijo siempre respondía "bien" cuando le preguntábamos cómo estaba y se encerraba en su pieza. Yo pensaba que simplemente no quería hablar. La guía me ayudó a entender que necesitaba otro tipo de preguntas y otro momento para abrirse. No fue un cambio de un día para otro, pero hoy nuestras conversaciones son mucho más naturales.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#7a5a9a,#9a7aba)">LM</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">Laura M.</span><span class="comment-verified">✓ Compradora verificada</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Lo que más me sirvió fue aprender cómo hablarle en ciertos momentos sin hacerlo sentir juzgado. Son cambios pequeños, pero me ayudaron a comunicarme mejor con él.</div>
+    </div>
+  </div>
+
+  <div class="comment">
+    <div class="comment-avatar" style="background:linear-gradient(135deg,#5a7a4a,#7a9a6a)">MA</div>
+    <div class="comment-body">
+      <div class="comment-header"><span class="comment-name">María A.</span><span class="comment-stars">★★★★★</span></div>
+      <div class="comment-text">Me ayudó a entender mejor a mi hijo. Me di cuenta de que muchas veces lo presionaba sin querer porque confundía su forma de ser con falta de confianza. Fue una lectura simple pero me hizo reflexionar bastante.</div>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta">
+  <div class="final-cta-inner">
+    <h2>Tu hijo necesita estas herramientas hoy</h2>
+    <p>No esperes a que el bullying o la exclusión dejen una huella más profunda. Empezá hoy con un método cálido, respetuoso y comprobado.</p>
+    <a href="https://samuelvergaraa-alt.github.io/elmundointerior/producto.html" class="btn" style="background:var(--cta);margin:0 auto;padding:18px 40px;font-size:1rem">CONSULTAR DISPONIBILIDAD AHORA</a>
+    <p class="cta-note">Acceso inmediato · Garantía de 7 días · Pago 100% seguro</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">El Mundo Interior</div>
+    <div class="footer-links">
+      <a href="#">Términos y condiciones</a>
+      <a href="#">Política de privacidad</a>
+      <a href="mailto:laura.gomez.ayuda@gmail.com">laura.gomez.ayuda@gmail.com</a>
+    </div>
+    <p class="footer-copy">© 2026 El Mundo Interior. Todos los derechos reservados.<br><small>*Laura Gómez es la autora del método presentado en este libro.</small></p>
+  </div>
+</footer>
 
 </body>
 </html>
